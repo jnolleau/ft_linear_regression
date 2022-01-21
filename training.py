@@ -2,6 +2,7 @@ from reader import Reader
 import sys
 import csv
 
+# read a csv file
 reader = Reader()
 
 if (len(sys.argv) > 1):
@@ -9,15 +10,14 @@ if (len(sys.argv) > 1):
 
 data_list = reader.getData()
 
+# debug: print csv data into terminal
 print(data_list)
 
-thetas = ['42.42', '21.21']
+# Print thetas into csv
+headers = ['theta0', 'theta1']
+thetas = ['-0.02145', '8499.5996'] # will be estimated by linear regression
 
-with open('tetha.csv', 'w', newline='') as f:
+with open('theta.csv', 'w', newline='') as f:
     writer = csv.writer(f)
-    writer.writerows(thetas)
-
-# with open("tetha.csv", 'w') as tehtas_file:
-#     tehtas_file.write("theta0,theta1\n")
-#     tehtas_file.writelines(thetas)
-
+    writer.writerow(headers)
+    writer.writerow(thetas)
