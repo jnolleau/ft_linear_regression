@@ -12,6 +12,9 @@ class Reader:
         try:
             data = np.genfromtxt(self.filename, delimiter=',',
                                  skip_header=0, dtype=None, encoding='utf8')
+            
+            if (data.shape[0] < 3 or len(data.shape) < 2):
+                sys.exit(f"Invalid file: {self.filename}")
 
             headers = data[0]
             x = data[1:, 0].astype(np.float64)
@@ -29,6 +32,11 @@ class Reader:
             with open(self.filename, newline='') as data_file:
                 reader = csv.reader(data_file)
                 theta = list(reader)
+            if (len(theta) < 2):
+                sys.exit(f"Invalid file: {self.filename}")
+            if (len(theta[1]) < 2):
+                sys.exit(f"Invalid file: {self.filename}")            
+
         except IOError:
             print(f"Could not read file: {self.filename}")
             return 0., 0.

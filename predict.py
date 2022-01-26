@@ -19,7 +19,7 @@ mileage = input("Enter the mileage of the car (km): ")
 if (mileage.isdigit()):
     mileage = int(mileage)
 else:
-    sys.exit("The mileage needs to be a integer value")
+    sys.exit("The mileage needs to be a positive integer value")
 
 if (mileage < 0):
     sys.exit("The mileage needs to be a positive value")
