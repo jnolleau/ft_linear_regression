@@ -35,7 +35,6 @@ def gradient_descent(X, y, theta, learningRate, n_iterations):
     for i in range(0, n_iterations):
         theta = theta - learningRate * grad(X, y, theta)
         cost_history[i] = cost_function(X, y, theta)
-        # print(theta)
     return theta, cost_history
 
 def scaling(x):
@@ -65,7 +64,7 @@ axs[0].set_title("Raw data and trend line")
 axs[0].set_xlabel(headers[0])
 axs[0].set_ylabel(headers[1])
 axs[1].plot(range(n_iterations), cost_history)
-axs[1].set_title("Cost value by iteration")
+axs[1].set_title("Learning curve (Cost value / iteration)")
 axs[1].set_xlabel("Number of iterations")
 axs[1].set_ylabel("Cost")
 plt.suptitle('ft_linear_regression')
