@@ -68,12 +68,11 @@ axs[1].set_title("Learning curve (Cost value / iteration)")
 axs[1].set_xlabel("Number of iterations")
 axs[1].set_ylabel("Cost")
 plt.suptitle('ft_linear_regression')
-plt.show()
-
 
 # Save thetas into csv
-out_headers = ['theta1', 'theta0']
-theta_final[0][0] = theta_final[0][0] / max(mileage)
+out_headers = ['theta1', 'theta0', 'max']
+out_theta = theta_final.flatten().tolist()
+out_theta.append(max(mileage)[0].tolist())
 
 np.set_printoptions(suppress=True)
 print(f"theta0 = {theta_final[1]}\ntheta1 = {theta_final[0]}")
@@ -81,7 +80,7 @@ print(f"theta0 = {theta_final[1]}\ntheta1 = {theta_final[0]}")
 with open('theta.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(out_headers)
-    writer.writerow(theta_final.flatten())
+    writer.writerow(out_theta)
 
 
 # Performances du model: R²
@@ -90,3 +89,5 @@ def coef_determination(y, pred):
     v = ((y - y.mean())**2).sum()
     return 1 - u/v
 print('R² = ', coef_determination(prices, predictions))
+
+plt.show()

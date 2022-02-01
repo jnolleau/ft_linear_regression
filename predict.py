@@ -10,7 +10,7 @@ max_mileage = 0
 # read the theta csv file
 rd = Reader()
 rd.setFilename("theta.csv")
-theta0, theta1 = rd.getTheta()
+theta0, theta1, max = rd.getTheta()
 
 # retrieve the mileage given in input
 mileage = input("Enter the mileage of the car (km): ")
@@ -28,9 +28,9 @@ if (mileage < 0):
 if (theta1 == 0.):
     max_mileage = -1
 else:
-    max_mileage = theta0 / (theta1 * -1)
+    max_mileage = theta0 / (theta1 / max * -1)
 
 if (mileage < max_mileage):
-    price = theta0 + (theta1 * mileage)
+    price = theta0 + theta1 * mileage / max
 
 print(f'Estimted price ($): {price:.0f}')

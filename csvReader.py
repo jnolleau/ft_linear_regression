@@ -40,7 +40,7 @@ class Reader:
         except IOError:
             print(f"Could not read file: {self.filename}")
             return 0., 0.
-        return float(theta[1][1]), float(theta[1][0])
+        return float(theta[1][1]), float(theta[1][0]), float(theta[1][2])
 
     def setFilename(self, filename):
         print(f"File read: {filename}")
